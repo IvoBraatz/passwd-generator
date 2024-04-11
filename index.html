@@ -9,24 +9,41 @@
 <body>
 <div class="container">
   <h1>Gerador de Senhas</h1>
-  <label for="length">Comprimento da Senha:</label>
-  <input type="number" id="length" min="4" max="20" value="8">
-  <br>
-  <label for="uppercase">Incluir Letras Maiúsculas:</label>
-  <input type="checkbox" id="uppercase">
-  <br>
-  <label for="lowercase">Incluir Letras Minúsculas:</label>
-  <input type="checkbox" id="lowercase">
-  <br>
-  <label for="numbers">Incluir Números:</label>
-  <input type="checkbox" id="numbers">
-  <br>
-  <label for="special">Incluir Caracteres Especiais:</label>
-  <input type="checkbox" id="special">
-  <br>
+  <div class="content">
+    <label  for="length">Comprimento da Senha:</label>
+    <div class="content-input">
+      <input class="number" type="number" id="length" min="4" max="20" value="8">
+    </div>
+  </div>
+  <div class="content">
+    <label for="uppercase">Incluir Letras Maiúsculas:</label>
+    <div class="content-input">
+      <input type="checkbox" id="uppercase">
+    </div> 
+  </div>
+  <div class="content">
+    <label for="lowercase">Incluir Letras Minúsculas:</label>
+    <div class="content-input">
+
+      <input type="checkbox" id="lowercase">
+    </div>
+  </div>
+  <div class="content">
+    <label for="numbers">Incluir Números:</label>
+    <div class="content-input">
+
+      <input type="checkbox" id="numbers">
+    </div>
+  </div>
+  <div class="content">
+    <label for="special">Incluir Caracteres Especiais:</label>
+    <div class="content-input">
+
+      <input type="checkbox" id="special">
+    </div>
+  </div>
   <button id="generate">Gerar Senha</button>
-  <br>
-  <input type="text" id="password" readonly>
+  <input class="passwd" type="text" id="password" readonly>
 </div>
 <script src="script.js"></script>
 </body>
