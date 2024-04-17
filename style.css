@@ -2,6 +2,10 @@
 
 body {
     font-family: Arial, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
   }
   
   .container {
@@ -10,6 +14,9 @@ body {
     align-items: center;
     justify-content: center;
     background-color: rgba(28, 28, 29, 0.6);
+    padding: 4rem 2rem;
+    border-radius: 6px;
+    box-shadow: 2px 2px 15px -4px #333333;
   }
   
   .content{
@@ -30,7 +37,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 1rem;
+    width: 4rem;
   }
 
   button {
@@ -42,11 +49,14 @@ body {
     width: 36rem;
     height: 4rem;
   }
-  
+
   .passwd{
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 2.6rem;
     text-align: center;
+    border-radius: 6px;
+    border: none;
+
   }
