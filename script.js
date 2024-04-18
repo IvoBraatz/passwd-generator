@@ -20,3 +20,10 @@ document.getElementById('generate').addEventListener('click', function() {
     document.getElementById('password').value = password;
   });
   
+
+  const range = document.getElementById('length');
+  const rangeValue = document.getElementById('rangeValue');
+
+  range.addEventListener('input', () => {
+    rangeValue.textContent = range.value;
+  });

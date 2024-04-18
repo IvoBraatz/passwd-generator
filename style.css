@@ -60,3 +60,82 @@ body {
     border: none;
 
   }
+
+  /* Estilizando os checkboxes */
+input[type="checkbox"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid #333;
+  outline: none;
+  cursor: pointer;
+}
+
+input[type="checkbox"]:checked {
+  background-color: #333;
+}
+
+/* Estilizando o input do tipo number */
+input[type="number"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 5px;
+  outline: none;
+}
+
+/* Adicionando um estilo de "deslize" */
+input[type="number"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #333;
+  cursor: pointer;
+}
+
+input[type="number"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #333;
+  cursor: pointer;
+}
+
+/* Estilizando o input do tipo range (slider) */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 20px;
+  background-color: #f1f1f1;
+  border-radius: 10px;
+  outline: none;
+  margin-bottom: 10px; /* Ajuste o espaçamento conforme necessário */
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #333;
+  cursor: pointer;
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #333;
+  cursor: pointer;
+}
