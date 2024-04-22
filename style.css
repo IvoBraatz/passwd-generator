@@ -2,28 +2,45 @@
 
 body {
     font-family: Arial, sans-serif;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     height: 100vh;
   }
   
+  .title{
+    font-size: 2.8rem;
+    margin: 2rem 0;
+  }
+
   .container {
     display: flex;
     flex-direction: column;
+    width: 100vw;
+    justify-content: space-around;
     align-items: center;
-    justify-content: center;
-    background-color: rgba(28, 28, 29, 0.6);
-    padding: 4rem 2rem;
-    border-radius: 6px;
-    box-shadow: 2px 2px 15px -4px #333333;
   }
   
+  .contents{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100vw;
+  }
+
+  .content,
+  .content1{
+    width: 20rem;
+  }
+
   .content{
     display: flex;
-    width: 20rem;
-    align-content: center;
-    justify-content: space-between;
+    flex-direction: column;
+  }
+
+  .content1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: .8rem;
   }
 
   .number{
@@ -46,8 +63,10 @@ body {
   
   input[type="text"] {
     margin-top: 10px;
-    width: 36rem;
+    width: 20rem;
     height: 4rem;
+    border: 2px solid #222;
+    border-radius: .2rem;
   }
 
   .passwd{
@@ -66,9 +85,9 @@ input[type="checkbox"] {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
+  width: 12px;
+  height: 12px;
+  border-radius: 20%;
   border: 2px solid #333;
   outline: none;
   cursor: pointer;
@@ -115,7 +134,7 @@ input[type="range"] {
   -webkit-appearance: none;
   appearance: none;
   width: 10rem;
-  height: .5rem;
+  height: .4rem;
   background-color: #f1f1f1;
   border-radius: 10px;
   outline: none;
