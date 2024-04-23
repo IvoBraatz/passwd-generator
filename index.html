@@ -8,52 +8,126 @@
 </head>
 <body>
   
-
-  <div class="container">
+<div class="container">
     <h1 class="title">Gerador de Senhas</h1>
   
-
-      <div class="contents">
+    <div class="contents">
         <div class="content1">
-          <label  for="length">Comprimento da Senha</label>
-          <div class="content-input">
-            <input class="number" type="range" id="length" min="4" max="40" value="8">
-            <span id="rangeValue">8</span>
-      
-          </div>
+            <label for="length">Comprimento da Senha</label>
+            <div class="content-input">
+                <input class="number" type="range" id="length" min="4" max="40" value="8">
+                <span id="rangeValue">8</span>
+            </div>
         </div>
         <div class="content">
-          <div class="content-input">
-            <label for="uppercase">Incluir Letras Maiúsculas</label>
-            <input type="checkbox" id="uppercase">
-          </div> 
-          <div class="content">
             <div class="content-input">
-              <label for="lowercase">Incluir Letras Minúsculas</label>
-        
-              <input type="checkbox" id="lowercase">
+                <label for="uppercase">Incluir Letras Maiúsculas</label>
+                <input type="checkbox" id="uppercase" checked>
+            </div> 
+            <div class="content">
+                <div class="content-input">
+                    <label for="lowercase">Incluir Letras Minúsculas</label>
+                    <input type="checkbox" id="lowercase" checked>
+                </div>
             </div>
-          </div>
-          <div class="content">
-            <div class="content-input">
-              <label for="numbers">Incluir Números</label>
-        
-              <input type="checkbox" id="numbers">
+            <div class="content">
+                <div class="content-input">
+                    <label for="numbers">Incluir Números</label>
+                    <input type="checkbox" id="numbers">
+                </div>
             </div>
-          </div>
-          <div class="content">
-            <div class="content-input">
-              <label for="special">Incluir Caracteres Especiais</label>
-              <input type="checkbox" id="special">
+            <div class="content">
+                <div class="content-input">
+                    <label for="special">Incluir Caracteres Especiais</label>
+                    <input type="checkbox" id="special">
+                </div>
             </div>
-          </div>
-          <div class="generate">
-            <button id="generate">Gerar Senha</button>
-          </div>
-        
-        <input class="passwd" type="text" id="password" readonly>
+            <input class="passwd" type="text" id="password" readonly>
+            <button id="copy">Copiar Senha</button>
         </div>
- 
-<script src="script.js"></script>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    updateRangeValue();
+    document.getElementById('password').value = ''; // Define o valor inicial como vazio
+    generatePassword();
+});
+
+document.getElementById('length').addEventListener('input', () => {
+    updateRangeValue();
+    generatePassword();
+});
+document.getElementById('uppercase').addEventListener('change', () => {
+    checkCheckbox();
+    generatePassword();
+});
+document.getElementById('lowercase').addEventListener('change', () => {
+    checkCheckbox();
+    generatePassword();
+});
+document.getElementById('numbers').addEventListener('change', () => {
+    checkCheckbox();
+    generatePassword();
+});
+document.getElementById('special').addEventListener('change', () => {
+    checkCheckbox();
+    generatePassword();
+});
+document.getElementById('copy').addEventListener('click', copyPassword);
+
+function updateRangeValue() {
+    var lengthValue = document.getElementById('length').value;
+    document.getElementById('rangeValue').textContent = lengthValue;
+}
+
+function checkCheckbox() {
+    var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    var checkedCount = 0;
+
+    checkboxes.forEach(function(checkbox) {
+        if (checkbox.checked) {
+            checkedCount++;
+        }
+    });
+
+    if (checkedCount === 0) {
+        alert('Pelo menos uma opção deve ser selecionada!');
+        document.getElementById('uppercase').checked = true; // Mantém a primeira checkbox selecionada
+    }
+}
+
+function generatePassword() {
+    var length = parseInt(document.getElementById('length').value);
+    var uppercase = document.getElementById('uppercase').checked;
+    var lowercase = document.getElementById('lowercase').checked;
+    var numbers = document.getElementById('numbers').checked;
+    var special = document.getElementById('special').checked;
+
+    var charset = '';
+    if (uppercase) charset += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    if (lowercase) charset += 'abcdefghijklmnopqrstuvwxyz';
+    if (numbers) charset += '0123456789';
+    if (special) charset += '!@#$%^&*()_+{}[]|;:,.<>?';
+
+    var password = '';
+    for (var i = 0; i < length; i++) {
+        var randomIndex = Math.floor(Math.random() * charset.length);
+        password += charset[randomIndex];
+    }
+
+    document.getElementById('password').value = password;
+}
+
+function copyPassword() {
+    var passwordField = document.getElementById('password');
+    passwordField.select();
+    passwordField.setSelectionRange(0, 99999); /* For mobile devices */
+    document.execCommand('copy');
+    alert('Senha copiada para a área de transferência!');
+}
+</script>
+
 </body>
 </html>
