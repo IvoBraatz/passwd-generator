@@ -1,13 +1,23 @@
 @import url(reset.css);
 
+:root{
+  --background-color: #f2f2f2;
+  --primary-color: #0554F2;
+  --secondary-color: #076DF2;
+  --tertiary-color: #3889F2;
+  --black--color: #0D0D0D;
+}
+
 body {
     font-family: Arial, sans-serif;
     height: 100vh;
+    background-color: var(--background-color);
   }
   
   .title{
     font-size: 2.8rem;
     margin: 2rem 0;
+    color: var(--primary-color);
   }
 
   .container {
@@ -28,6 +38,8 @@ body {
   .content,
   .content1{
     width: 20rem;
+    border: 1px solid var(--black--color);
+    
   }
 
   .content{
@@ -41,6 +53,7 @@ body {
     justify-content: center;
     flex-direction: column;
     gap: .8rem;
+    font-size: 1.4rem;
   }
 
   .number{
@@ -53,17 +66,31 @@ body {
   .content-input{
     display: flex;
     align-items: center;
+    justify-content: left;
+    flex-direction: row-reverse;
+    color: var(--black--color);
+    font-size: 1.4rem;
+  }
+
+  .generate{
+    display: flex;
     justify-content: center;
-    width: 4rem;
+    align-items: center;
+    padding: 1rem 0;
   }
 
   button {
     margin-top: 10px;
+    background-color: var(--tertiary-color);
+    border: none;
+    border-radius: .2rem;
+    width: 8rem;
+    height: 2rem;
+    font-size: 1.2rem;
   }
   
   input[type="text"] {
     margin-top: 10px;
-    width: 20rem;
     height: 4rem;
     border: 2px solid #222;
     border-radius: .2rem;
@@ -85,10 +112,10 @@ input[type="checkbox"] {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  width: 12px;
-  height: 12px;
+  width: 14px;
+  height: 14px;
   border-radius: 20%;
-  border: 2px solid #333;
+  border: 2px solid var(--primary-color);
   outline: none;
   cursor: pointer;
 }
@@ -135,11 +162,13 @@ input[type="range"] {
   appearance: none;
   width: 10rem;
   height: .4rem;
-  background-color: #f1f1f1;
-  border-radius: 10px;
+  background-color: var(--tertiary-color);
+  border-radius: 4px;
   outline: none;
-  margin-bottom: 10px; /* Ajuste o espaçamento conforme necessário */
+  margin-bottom: 10px; 
 }
+
+
 
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
@@ -147,7 +176,7 @@ input[type="range"]::-webkit-slider-thumb {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background-color: #333;
+  background-color: var(--black--color);
   cursor: pointer;
 }
 
@@ -155,6 +184,6 @@ input[type="range"]::-moz-range-thumb {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background-color: #333;
+  background-color: var(--black--color);
   cursor: pointer;
 }
