@@ -8,45 +8,51 @@
 </head>
 <body>
   
-<div class="container">
-    <h1 class="title">Gerador de Senhas</h1>
-  
-    <div class="contents">
-        <div class="content1">
-            <label for="length">Comprimento da Senha</label>
-            <div class="content-input">
-                <input class="number" type="range" id="length" min="4" max="40" value="8">
-                <span id="rangeValue">8</span>
-            </div>
-        </div>
-        <div class="content">
-            <div class="content-input">
-                <label for="uppercase">Incluir Letras Maiúsculas</label>
-                <input type="checkbox" id="uppercase" checked>
-            </div> 
-            <div class="content">
+    <div class="container">
+        <h1 class="title">Gerador de Senhas</h1>
+      
+        <div class="contents">
+            <div class="content1">
+                <label for="length">Comprimento da Senha</label>
                 <div class="content-input">
-                    <label for="lowercase">Incluir Letras Minúsculas</label>
-                    <input type="checkbox" id="lowercase" checked>
+                    <input class="number" type="range" id="length" min="4" max="40" value="8">
+                    <span id="rangeValue">8</span>
                 </div>
             </div>
             <div class="content">
                 <div class="content-input">
-                    <label for="numbers">Incluir Números</label>
-                    <input type="checkbox" id="numbers">
-                </div>
-            </div>
-            <div class="content">
+                    <label for="uppercase" class="custom-checkbox-label">
+                        <input type="checkbox" id="uppercase" checked>
+                        <span class="checkmark"></span>
+                    </label>
+                    <span>Incluir Letras Maiúsculas</span>
+                </div> 
                 <div class="content-input">
-                    <label for="special">Incluir Caracteres Especiais</label>
-                    <input type="checkbox" id="special">
+                    <label for="lowercase" class="custom-checkbox-label">
+                        <input type="checkbox" id="lowercase" checked>
+                        <span class="checkmark"></span>
+                    </label>
+                    <span>Incluir Letras Minúsculas</span>
                 </div>
+                <div class="content-input">
+                    <label for="numbers" class="custom-checkbox-label">
+                        <input type="checkbox" id="numbers">
+                        <span class="checkmark"></span>
+                    </label>
+                    <span>Incluir Números</span>
+                </div>
+                <div class="content-input">
+                    <label for="special" class="custom-checkbox-label">
+                        <input type="checkbox" id="special">
+                        <span class="checkmark"></span>
+                    </label>
+                    <span>Incluir Caracteres Especiais</span>
+                </div>
+                <input class="passwd" type="text" id="password" readonly>
+                <button id="copy">Copiar Senha</button>
             </div>
-            <input class="passwd" type="text" id="password" readonly>
-            <button id="copy">Copiar Senha</button>
         </div>
     </div>
-</div>
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {

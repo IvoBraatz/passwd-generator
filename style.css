@@ -101,23 +101,38 @@ body {
     text-align: center;
     border: 1px solid var(--black--color);
   }
+/* Estilos para as checkboxes personalizadas */
+.custom-checkbox input[type="checkbox"] {
+  display: none; /* Esconde a checkbox padrão */
+}
 
-  /* Estilizando os checkboxes */
-input[type="checkbox"] {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  width: 14px;
-  height: 14px;
-  border-radius: 20%;
-  border: 2px solid var(--primary-color);
-  outline: none;
+/* Estilo do contêiner da checkbox personalizada */
+.custom-checkbox-label {
+  display: block;
+  position: relative;
   cursor: pointer;
+  font-size: 20px;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
-input[type="checkbox"]:checked {
-  background-color: #333;
+/* Estilo da marca de seleção da checkbox personalizada */
+.custom-checkbox-label .checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 1.3em;
+  width: 1.3em;
+  background-color: var(--primary-color);
+  border-radius: 0.25em;
+  transition: all 0.25s;
 }
+
+/* Estilo da marca de seleção quando a checkbox está marcada */
+.custom-checkbox input:checked + .checkmark {
+  background-color: #2196F3 !important;
+}
+
 
 /* Estilizando o input do tipo number */
 input[type="number"] {
