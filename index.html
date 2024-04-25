@@ -8,8 +8,16 @@
 </head>
 <body>
   
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p id="modalText"></p>
+        </div>
+    </div>
+
     <div class="container">
-        <h1 class="title">Gerador de Senhas</h1>
+        <a href="#"><img class="logo" src="YTLG.png" alt="logo youtools"></a>
+        <h2 class="subtitle">password generator</h2>
       
         <div class="contents">
             <div class="content1">
@@ -54,86 +62,118 @@
         </div>
     </div>
 
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-    updateRangeValue();
-    document.getElementById('password').value = ''; // Define o valor inicial como vazio
-    generatePassword();
-});
+    <footer>
+        <div class="container-footer">
+            <a class="footer-content" href="https://ivobraatz.github.io/"><img src="github.png" alt="logo github">Ivo Braatz &copy; 2024</a>
+        </div>
+    </footer>
 
-document.getElementById('length').addEventListener('input', () => {
-    updateRangeValue();
-    generatePassword();
-});
-document.getElementById('uppercase').addEventListener('change', () => {
-    checkCheckbox();
-    generatePassword();
-});
-document.getElementById('lowercase').addEventListener('change', () => {
-    checkCheckbox();
-    generatePassword();
-});
-document.getElementById('numbers').addEventListener('change', () => {
-    checkCheckbox();
-    generatePassword();
-});
-document.getElementById('special').addEventListener('change', () => {
-    checkCheckbox();
-    generatePassword();
-});
-document.getElementById('copy').addEventListener('click', copyPassword);
-
-function updateRangeValue() {
-    var lengthValue = document.getElementById('length').value;
-    document.getElementById('rangeValue').textContent = lengthValue;
-}
-
-function checkCheckbox() {
-    var checkboxes = document.querySelectorAll('input[type="checkbox"]');
-    var checkedCount = 0;
-
-    checkboxes.forEach(function(checkbox) {
-        if (checkbox.checked) {
-            checkedCount++;
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            updateRangeValue();
+            document.getElementById('password').value = '';
+            generatePassword();
+        });
+        
+        document.getElementById('length').addEventListener('input', () => {
+            updateRangeValue();
+            generatePassword();
+        });
+        document.getElementById('uppercase').addEventListener('change', () => {
+            checkCheckbox();
+            generatePassword();
+        });
+        document.getElementById('lowercase').addEventListener('change', () => {
+            checkCheckbox();
+            generatePassword();
+        });
+        document.getElementById('numbers').addEventListener('change', () => {
+            checkCheckbox();
+            generatePassword();
+        });
+        document.getElementById('special').addEventListener('change', () => {
+            checkCheckbox();
+            generatePassword();
+        });
+        document.getElementById('copy').addEventListener('click', copyPassword);
+        
+        function updateRangeValue() {
+            var lengthValue = document.getElementById('length').value;
+            document.getElementById('rangeValue').textContent = lengthValue;
         }
-    });
+        
+        function checkCheckbox() {
+            var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            var checkedCount = 0;
+        
+            checkboxes.forEach(function(checkbox) {
+                if (checkbox.checked) {
+                    checkedCount++;
+                }
+            });
+        
+            if (checkedCount === 0) {
+                var modal = document.getElementById('myModal');
+                var modalText = document.getElementById('modalText');
+                modalText.textContent = 'Pelo menos uma opção deve ser selecionada!';
+                modal.style.display = 'block';
+        
+                var closeButton = document.querySelector('.close');
+                closeButton.addEventListener('click', function() {
+                    modal.style.display = 'none';
+                });
+        
+                document.getElementById('uppercase').checked = true;
+            }
+        }
+        
+        function generatePassword() {
+            var length = parseInt(document.getElementById('length').value);
+            var uppercase = document.getElementById('uppercase').checked;
+            var lowercase = document.getElementById('lowercase').checked;
+            var numbers = document.getElementById('numbers').checked;
+            var special = document.getElementById('special').checked;
+        
+            var charset = '';
+            if (uppercase) charset += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            if (lowercase) charset += 'abcdefghijklmnopqrstuvwxyz';
+            if (numbers) charset += '0123456789';
+            if (special) charset += '!@#$%^&*()_+{}[]|;:,.<>?';
+        
+            var password = '';
+            for (var i = 0; i < length; i++) {
+                var randomIndex = Math.floor(Math.random() * charset.length);
+                password += charset[randomIndex];
+            }
+        
+            document.getElementById('password').value = password;
+        }
+        
+        function copyPassword() {
+            var passwordField = document.getElementById('password');
+            passwordField.select();
+            passwordField.setSelectionRange(0, 99999); 
+            document.execCommand('copy');
 
-    if (checkedCount === 0) {
-        alert('Pelo menos uma opção deve ser selecionada!');
-        document.getElementById('uppercase').checked = true; // Mantém a primeira checkbox selecionada
-    }
-}
+            var modal = document.getElementById('myModal');
+            var modalText = document.getElementById('modalText');
+            modalText.textContent = 'Senha copiada para a área de transferência!';
+            modal.style.display = 'block';
 
-function generatePassword() {
-    var length = parseInt(document.getElementById('length').value);
-    var uppercase = document.getElementById('uppercase').checked;
-    var lowercase = document.getElementById('lowercase').checked;
-    var numbers = document.getElementById('numbers').checked;
-    var special = document.getElementById('special').checked;
+            var closeButton = document.querySelector('.close');
+            closeButton.style.display = 'block';
 
-    var charset = '';
-    if (uppercase) charset += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    if (lowercase) charset += 'abcdefghijklmnopqrstuvwxyz';
-    if (numbers) charset += '0123456789';
-    if (special) charset += '!@#$%^&*()_+{}[]|;:,.<>?';
+            var timeoutId = setTimeout(function() {
+                modal.style.display = 'none';
+            }, 5000); 
 
-    var password = '';
-    for (var i = 0; i < length; i++) {
-        var randomIndex = Math.floor(Math.random() * charset.length);
-        password += charset[randomIndex];
-    }
+            closeButton.addEventListener('click', function() {
+                modal.style.display = 'none';
+                clearTimeout(timeoutId);
+            });
+        }
 
-    document.getElementById('password').value = password;
-}
-
-function copyPassword() {
-    var passwordField = document.getElementById('password');
-    passwordField.select();
-    passwordField.setSelectionRange(0, 99999); /* For mobile devices */
-    document.execCommand('copy');
-    alert('Senha copiada para a área de transferência!');
-}
-</script>
+        </script>
 
 </body>
 </html>
